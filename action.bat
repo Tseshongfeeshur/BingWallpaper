@@ -22,3 +22,13 @@ curl "https://www.bing.com%url%_1920x1080.jpg" -o output\1080p.jpg
 curl "https://www.bing.com%url%_1280x720.jpg" -o output\720p.jpg
 del %tmp%\wallpaper.json
 del %tmp%\tmp.txt
+mkdir temp
+cd temp
+git init
+git remote add origin https://github.com/Tseshongfeeshur/BingWallpaper.git
+git fetch
+git checkout gh-pages
+xcopy "output\*" ".\" /E /Y
+git add .
+git commit -m "Update"
+git push -f origin gh-pages
