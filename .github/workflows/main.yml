@@ -1,0 +1,34 @@
+name: 壁纸更新
+
+on:
+  schedule:
+    - cron: '30 0 * * *'
+    timezone: Asia/Shanghai
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Git
+        run: |
+          choco install git -y
+          git config --global user.email "Yuanzhehan@yeah.net"
+          git config --global user.name "Tseshongfeeshur"
+
+      - name: Configure SSH
+        run: |
+          echo "${{ secrets.PubKey }}" > id_rsa.pub
+          echo "${{ secrets.SubKey }}" > id_rsa
+          mkdir -p ~/.ssh
+          cp id_rsa.pub ~/.ssh/id_rsa.pub
+          cp id_rsa ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+      - name: Run action.bat
+        run: |
+          cd ${{ github.workspace }}
+          action.bat
