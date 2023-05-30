@@ -20,12 +20,12 @@ jobs:
 
       - name: Configure SSH
         run: |
-          echo "${{ secrets.PubKey }}" > id_rsa.pub
-          echo "${{ secrets.SubKey }}" > id_rsa
-          mkdir -p ~/.ssh
-          cp id_rsa.pub ~/.ssh/id_rsa.pub
-          cp id_rsa ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+          echo ${{ secrets.PubKey }} > id_rsa.pub
+          echo ${{ secrets.SubKey }} > id_rsa
+          mkdir C:\Users\USERNAME\.ssh
+          copy id_rsa.pub C:\Users\USERNAME\.ssh\id_rsa.pub
+          copy id_rsa C:\Users\USERNAME\.ssh\id_rsa
+          attrib +R C:\Users\USERNAME\.ssh\id_rsa
 
       - name: Run action.bat
         run: |
