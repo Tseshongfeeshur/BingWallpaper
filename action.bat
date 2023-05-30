@@ -27,7 +27,7 @@ cd temp
 git init
 git remote add origin git@github.com:Tseshongfeeshur/BingWallpaper.git
 git fetch
-git checkout gh-pages
+git checkout -b gh-pages
 xcopy "output\*" ".\" /E /Y
 git add .
 git commit -m "Update"
