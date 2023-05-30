@@ -23,9 +23,9 @@ jobs:
           echo %PubKey% > id_rsa.pub
           echo %SubKey% > id_rsa
           mkdir C:\Users\USERNAME\.ssh
-          copy id_rsa.pub C:\Users\USERNAME\.ssh\id_rsa.pub
-          copy id_rsa C:\Users\USERNAME\.ssh\id_rsa
-          attrib +R C:\Users\USERNAME\.ssh\id_rsa
+          copy id_rsa.pub C:\Users\%USERNAME%\.ssh\id_rsa.pub
+          copy id_rsa C:\Users\%USERNAME%\.ssh\id_rsa
+          attrib +R C:\Users\%USERNAME%\.ssh\id_rsa
 
       - name: Run action.bat
         run: |
