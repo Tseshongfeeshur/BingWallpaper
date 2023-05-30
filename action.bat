@@ -5,7 +5,7 @@ jq .urlbase %tmp%\wallpaper.json -r >%tmp%\tmp.txt
 set url=
 set /p url=<%tmp%\tmp.txt
 jq .copyright %tmp%\wallpaper.json -r >%tmp%\tmp.txt
-set describe
+set describe=
 set /p describe=<%tmp%\tmp.txt
 jq .copyrightlink %tmp%\wallpaper.json -r >%tmp%\tmp.txt
 set search=
