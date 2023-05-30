@@ -1,5 +1,3 @@
-type C:\Users\%USERNAME%\.ssh\id_rsa.pub
-type C:\Users\%USERNAME%\.ssh\id_rsa
 set curl=
 set curl=curl\bin\curl.exe
 %curl% "https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=zh-CN" | jq .images | jq .[] >%tmp%\wallpaper.json
@@ -26,10 +24,12 @@ del %tmp%\wallpaper.json
 del %tmp%\tmp.txt
 echo %PubKey% > id_rsa.pub
 echo %SubKey% > id_rsa
-mkdir C:\Users\%USERNAME%\.ssh
-copy id_rsa.pub C:\Users\%USERNAME%\.ssh\id_rsa.pub
-copy id_rsa C:\Users\%USERNAME%\.ssh\id_rsa
-attrib +R C:\Users\%USERNAME%\.ssh\id_rsa
+mkdir %USERPROFILE%\.ssh
+copy id_rsa.pub %USERPROFILE%\.ssh\id_rsa.pub
+copy id_rsa %USERPROFILE%\.ssh\id_rsa
+attrib +R %USERPROFILE%\.ssh\id_rsa
+type %USERPROFILE%\.ssh\id_rsa.pub
+type %USERPROFILE%\.ssh\id_rsa
 mkdir temp
 cd temp
 git init
