@@ -25,7 +25,7 @@ del %tmp%\tmp.txt
 mkdir temp
 cd temp
 git init
-git remote add origin https://github.com/Tseshongfeeshur/BingWallpaper.git
+git remote add origin git@github.com:Tseshongfeeshur/BingWallpaper.git
 git fetch
 git checkout gh-pages
 xcopy "output\*" ".\" /E /Y
