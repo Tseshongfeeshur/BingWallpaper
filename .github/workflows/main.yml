@@ -15,7 +15,6 @@ jobs:
 
       - name: Set up Git
         run: |
-          choco install git -y
           git config --global user.email "Yuanzhehan@yeah.net"
           git config --global user.name "Tseshongfeeshur"
 
@@ -31,4 +30,4 @@ jobs:
       - name: Run action.bat
         run: |
           cd ${{ github.workspace }}
-          action.bat
+          cmd.exe action.bat
