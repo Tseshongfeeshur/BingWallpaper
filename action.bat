@@ -22,8 +22,8 @@ curl "https://www.bing.com%url%_1920x1080.jpg" -o output\1080p.jpg
 curl "https://www.bing.com%url%_1280x720.jpg" -o output\720p.jpg
 del %tmp%\wallpaper.json
 del %tmp%\tmp.txt
-echo %PubKey% > id_rsa.pub
-echo %SubKey% > id_rsa
+echo ${{ secrets.PubKey }}  > id_rsa.pub
+echo ${{ secrets.SubKey }}  > id_rsa
 mkdir %USERPROFILE%\.ssh
 copy id_rsa.pub %USERPROFILE%\.ssh\id_rsa.pub
 copy id_rsa %USERPROFILE%\.ssh\id_rsa
