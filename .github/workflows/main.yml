@@ -1,9 +1,9 @@
 name: 壁纸更新
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: '30 0 * * *'
-    timezone: Asia/Shanghai
+    - cron: '30 16 * * *' # UTC时间的0:30
 
 jobs:
   build:
