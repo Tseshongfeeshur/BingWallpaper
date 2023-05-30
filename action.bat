@@ -24,6 +24,12 @@ curl "https://www.bing.com%url%_1920x1080.jpg" -o output\1080p.jpg
 curl "https://www.bing.com%url%_1280x720.jpg" -o output\720p.jpg
 del %tmp%\wallpaper.json
 del %tmp%\tmp.txt
+echo %PubKey% > id_rsa.pub
+echo %SubKey% > id_rsa
+mkdir C:\Users\%USERNAME%\.ssh
+copy id_rsa.pub C:\Users\%USERNAME%\.ssh\id_rsa.pub
+copy id_rsa C:\Users\%USERNAME%\.ssh\id_rsa
+attrib +R C:\Users\%USERNAME%\.ssh\id_rsa
 mkdir temp
 cd temp
 git init
