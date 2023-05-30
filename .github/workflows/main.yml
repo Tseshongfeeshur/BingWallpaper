@@ -30,4 +30,4 @@ jobs:
       - name: Run action.bat
         run: |
           cd ${{ github.workspace }}
-          cmd.exe action.bat
+          cmd /c action.bat
