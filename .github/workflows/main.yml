@@ -13,23 +13,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Git
-        run: |
-          git config --global user.email "Yuanzhehan@yeah.net"
-          git config --global user.name "Tseshongfeeshur"
-
       - name: Configure SSH
         env: 
           Sub: ${{secrets.SubKey}}
         run: |
-          echo "${{secrets.PubKey}}" > id_rsa.pub
-          echo "$Sub" > id_rsa
-          ssh-keyscan github.com >> known_hosts
-          mkdir %USERPROFILE%\.ssh
-          copy id_rsa.pub %USERPROFILE%\.ssh\id_rsa.pub
-          copy id_rsa %USERPROFILE%\.ssh\id_rsa
-          copy known_hosts %USERPROFILE%\.ssh\known_hosts
-          attrib +R %USERPROFILE%\.ssh\id_rsa
+          md C:\Users\runneradmin\.ssh
+          echo "$Sub" > C:\Users\runneradmin\.ssh\id_rsa
+          ssh-keyscan github.com >> C:\Users\runneradmin\.ssh\known_hosts
+          # attrib +R %USERPROFILE%\.ssh\id_rsa
+
+      - name: Set up Git
+        run: |
+          git config --global user.email "Yuanzhehan@yeah.net"
+          git config --global user.name "Tseshongfeeshur"
 
       - name: Run action.bat
         run: |
