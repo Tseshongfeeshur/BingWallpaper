@@ -19,12 +19,16 @@ jobs:
           git config --global user.name "Tseshongfeeshur"
 
       - name: Configure SSH
+        env: 
+          Sub: ${{secrets.SubKey}}
         run: |
           echo "${{secrets.PubKey}}" > id_rsa.pub
-          echo "${{secrets.SubKey}}" > id_rsa
+          echo "$Sub" > id_rsa
+          ssh-keyscan github.com >> known_hosts
           mkdir %USERPROFILE%\.ssh
           copy id_rsa.pub %USERPROFILE%\.ssh\id_rsa.pub
           copy id_rsa %USERPROFILE%\.ssh\id_rsa
+          copy known_hosts %USERPROFILE%\.ssh\known_hosts
           attrib +R %USERPROFILE%\.ssh\id_rsa
 
       - name: Run action.bat
