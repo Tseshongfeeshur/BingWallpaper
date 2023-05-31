@@ -20,8 +20,8 @@ jobs:
 
       - name: Configure SSH
         run: |
-          echo %PubKey% > id_rsa.pub
-          echo %SubKey% > id_rsa
+          echo $secrets.PubKey > id_rsa.pub
+          echo $secrets.SubKey > id_rsa
           mkdir %USERPROFILE%\.ssh
           copy id_rsa.pub %USERPROFILE%\.ssh\id_rsa.pub
           copy id_rsa %USERPROFILE%\.ssh\id_rsa
