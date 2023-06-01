@@ -17,6 +17,7 @@ jobs:
         env: 
           Sub: ${{secrets.SubKey}}
         run: |
+          sudo timedatectl set-timezone "Asia/Shanghai"
           mkdir -p ~/.ssh
           echo "$Sub" > ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
@@ -30,4 +31,5 @@ jobs:
       - name: Run action.sh
         run: |
           cd ${{ github.workspace }}
-          ./action.sh
+          ls
+          ../action.sh
