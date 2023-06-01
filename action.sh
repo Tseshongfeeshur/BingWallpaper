@@ -1,14 +1,15 @@
 #!/bin/bash
 
-curl "https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=zh-CN" | jq .images | jq .[] >$tmp/wallpaper.json
-jq .urlbase $tmp/wallpaper.json -r >$tmp/tmp.txt
-read -r url<$tmp/tmp.txt
-jq .copyright $tmp/wallpaper.json -r >$tmp/tmp.txt
-read -r describe<$tmp/tmp.txt
-jq .copyrightlink $tmp/wallpaper.json -r >$tmp/tmp.txt
-read -r search<$tmp/tmp.txt
-jq .title $tmp/wallpaper.json -r >$tmp/tmp.txt
-read -r title<$tmp/tmp.txt
+mkdir mydir
+curl "https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=zh-CN" | jq .images | jq .[] >mydir/wallpaper.json
+jq .urlbase mydir/wallpaper.json -r >mydir/tmp.txt
+read -r url<mydir/tmp.txt
+jq .copyright mydir/wallpaper.json -r >mydir/tmp.txt
+read -r describe<mydir/tmp.txt
+jq .copyrightlink mydir/wallpaper.json -r >mydir/tmp.txt
+read -r search<mydir/tmp.txt
+jq .title mydir/wallpaper.json -r >mydir/tmp.txt
+read -r title<mydir/tmp.txt
 mkdir output
 echo {"Title":"$title","Describe":"$describe","UrlIn4k":"https://www.bing.com$url_UHD.jpg","UrlIn1080p":"https://www.bing.com$url_1920x1080.jpg","UrlIn720p":"https://www.bing.com$url_1280x720.jpg","Search":"$search"} | jq . >output/all.json
 curl "https://www.bing.com$url_UHD.jpg" -o output/4k.jpg
