@@ -20,7 +20,7 @@ git init
 git remote add origin git@github.com:Tseshongfeeshur/BingWallpaper.git
 git fetch
 git checkout -b gh-pages
-cp -r "../output/*" "."
+cp -a -f "../output/." "."
 git add .
 git commit -m "Update"
 git push -f origin gh-pages
