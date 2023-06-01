@@ -31,5 +31,5 @@ jobs:
       - name: Run action.sh
         run: |
           cd ${{ github.workspace }}
-          chmod +x action.sh
+          chmod +x ./action.sh
           ./action.sh
