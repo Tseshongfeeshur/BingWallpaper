@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
@@ -17,17 +17,17 @@ jobs:
         env: 
           Sub: ${{secrets.SubKey}}
         run: |
-          md C:\Users\runneradmin\.ssh
-          echo "$Sub" > C:\Users\runneradmin\.ssh\id_rsa
-          ssh-keyscan github.com >> C:\Users\runneradmin\.ssh\known_hosts
-          # attrib +R %USERPROFILE%\.ssh\id_rsa
+          mkdir -p ~/.ssh
+          echo "$Sub" > ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/id_rsa
 
       - name: Set up Git
         run: |
           git config --global user.email "Yuanzhehan@yeah.net"
           git config --global user.name "Tseshongfeeshur"
 
-      - name: Run action.bat
+      - name: Run action.sh
         run: |
           cd ${{ github.workspace }}
-          cmd /c action.bat
+          ./action.sh
