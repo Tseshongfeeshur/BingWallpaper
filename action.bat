@@ -20,10 +20,6 @@ echo {"Title":"%title%","Describe":"%describe%","UrlIn4k":"https://www.bing.com%
 curl "https://www.bing.com%url%_UHD.jpg" -o output\4k.jpg
 curl "https://www.bing.com%url%_1920x1080.jpg" -o output\1080p.jpg
 curl "https://www.bing.com%url%_1280x720.jpg" -o output\720p.jpg
-del %tmp%\wallpaper.json
-del %tmp%\tmp.txt
-type %USERPROFILE%\.ssh\id_rsa.pub
-type %USERPROFILE%\.ssh\id_rsa
 mkdir temp
 cd temp
 git init
