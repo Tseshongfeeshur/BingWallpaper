@@ -32,5 +32,7 @@ jobs:
         run: |
           cd ${{ github.workspace }}
           chmod +x ./action.sh
+          sudo apt update
+          sudo apt install dos2unix
           dos2unix action.sh
           ./action.sh
