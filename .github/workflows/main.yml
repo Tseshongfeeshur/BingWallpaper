@@ -32,4 +32,5 @@ jobs:
         run: |
           cd ${{ github.workspace }}
           chmod +x ./action.sh
+          dos2unix action.sh
           ./action.sh
