@@ -22,6 +22,8 @@ git remote add origin git@github.com:Tseshongfeeshur/BingWallpaper.git
 git fetch
 git checkout -b gh-pages
 cp -a -f "../output/." "."
+cp -f "../page.html" "index.html"
+cp -f "../page.html" "404.html"
 git add .
 git commit -m "Update"
 git push -f origin gh-pages
