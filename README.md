@@ -1,2 +1,2 @@
 # BingWallpaper
-必应壁纸
+必应每日壁纸
